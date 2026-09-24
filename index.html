@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#08080b">
+<title>HumanPetsWorld</title>
+<link rel="icon" type="image/png" href="favicon.png">
+<meta name="description" content="HumanPetsWorld — a familiar world where the roles are reversed.">
+<style>
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;min-height:100vh;color:#fff;font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;background:radial-gradient(circle at 12% 8%,rgba(37,244,238,.14),transparent 27%),radial-gradient(circle at 88% 15%,rgba(254,44,85,.14),transparent 28%),#08080b}
+.wrap{width:min(100%,760px);margin:auto;padding:20px 16px 44px}
+.top{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.identity{display:flex;align-items:center;gap:11px}
+.mark{width:43px;height:43px;border-radius:14px;background:#121217;display:grid;place-items:center;font-weight:900;font-size:20px;box-shadow:-3px 0 #25f4ee,3px 0 #fe2c55}
+.brand{font-weight:850}.sub{font-size:11px;color:#81818a;margin-top:2px}
+.lang{display:flex;gap:4px;padding:4px;background:#111116;border:1px solid #25252c;border-radius:12px}
+.lang button{border:0;background:transparent;color:#85858e;padding:7px 8px;border-radius:8px;font-weight:800;cursor:pointer}
+.lang button.active{background:#24242b;color:#fff}
+.hero{text-align:center;padding:55px 4px 25px}
+.pill{display:inline-block;border:1px solid #292930;background:rgba(255,255,255,.035);padding:7px 12px;border-radius:999px;color:#c6c6cd;font-size:11px;font-weight:800;letter-spacing:.7px}
+h1{font-size:clamp(38px,11vw,68px);line-height:.96;letter-spacing:-2px;margin:18px 0 14px}
+.accent{color:#25f4ee;text-shadow:2px 2px 0 rgba(254,44,85,.6)}
+.lead{max-width:570px;margin:auto;color:#b3b3bc;font-size:16px;line-height:1.6}
+.cta{display:flex;justify-content:center;align-items:center;gap:10px;width:min(100%,430px);min-height:59px;margin:27px auto 10px;text-decoration:none;color:white;font-size:17px;font-weight:900;border-radius:17px;background:linear-gradient(105deg,#147e7b,#121217 43%,#ae1c3c);border:1px solid rgba(255,255,255,.13);box-shadow:0 15px 45px rgba(0,0,0,.4),-3px 0 #25f4ee,3px 0 #fe2c55;transition:.18s}
+.cta:hover{transform:translateY(-2px);filter:brightness(1.12)} .cta:active{transform:scale(.985)}
+.address{font-size:12px;color:#696972}
+.section{margin-top:42px}.section h2{font-size:24px;margin:0 0 7px}.section>p{margin:0 0 18px;color:#9999a2;font-size:14px;line-height:1.55}
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.card{position:relative;aspect-ratio:9/14;border-radius:18px;overflow:hidden;background:linear-gradient(145deg,#191920,#0e0e12);border:1px solid #27272e}
+.card img,.card video{width:100%;height:100%;object-fit:cover;display:block}
+.card .placeholder{height:100%;display:grid;place-items:center;text-align:center;padding:12px;color:#85858e;font-size:12px;background:radial-gradient(circle at 25% 20%,rgba(37,244,238,.16),transparent 35%),radial-gradient(circle at 75% 75%,rgba(254,44,85,.16),transparent 40%)}
+.card .label{position:absolute;left:0;right:0;bottom:0;padding:25px 10px 10px;background:linear-gradient(transparent,rgba(0,0,0,.82));font-size:11px;font-weight:800}
+
+.bottom{text-align:center;margin-top:35px}.bottom h3{font-size:22px;margin-bottom:4px}.bottom p{color:#92929b;margin:0 auto 15px;font-size:14px}
+footer{text-align:center;margin-top:34px;color:#505058;font-size:11px}
+@media(max-width:500px){.hero{padding-top:43px}.gallery{gap:7px}.card{border-radius:14px}.lang button{padding:6px}.sub{display:none}}
+</style>
+</head>
+<body>
+<main class="wrap">
+<header class="top">
+ <div class="identity"><div class="mark">H</div><div><div class="brand">HumanPetsWorld</div><div class="sub">the world turned upside down</div></div></div>
+ <div class="lang"><button data-lang="ru">RU</button><button data-lang="uk">UA</button><button data-lang="en">EN</button></div>
+</header>
+
+<section class="hero">
+ <div class="pill" data-i="welcome"></div>
+ <h1><span data-i="title1"></span><br><span class="accent" data-i="title2"></span></h1>
+ <p class="lead" data-i="lead"></p>
+ <a class="cta" href="https://t.me/HumanPetsWorld" target="_blank" rel="noopener"><span>✈</span><span data-i="join"></span></a>
+ <div class="address">t.me/HumanPetsWorld</div>
+</section>
+
+<section class="section">
+ <h2 data-i="expect"></h2>
+ <p data-i="expectText"></p>
+ <div class="gallery">
+   <!-- КАРТИНКА: положи images/preview1.jpg -->
+   <div class="card">
+     <img src="images/preview1.jpg" alt="HumanPetsWorld preview" onerror="this.closest('.card').style.display='none'">
+     <div class="label" data-i="lab1"></div>
+   </div>
+   <!-- ВИДЕО: положи videos/preview1.mp4 -->
+   <div class="card">
+     <video src="videos/preview1.mp4" muted loop playsinline controls onerror="this.closest('.card').style.display='none'"></video>
+     <div class="label" data-i="lab2"></div>
+   </div>
+   <!-- КАРТИНКА: положи images/preview2.jpg -->
+   <div class="card">
+     <img src="images/preview2.jpg" alt="HumanPetsWorld preview" onerror="this.closest('.card').style.display='none'">
+     <div class="label" data-i="lab3"></div>
+   </div>
+ </div>
+</section>
+<section class="bottom">
+ <h3 data-i="more"></h3><p data-i="moreText"></p>
+ <a class="cta" href="https://t.me/HumanPetsWorld" target="_blank" rel="noopener"><span data-i="join2"></span> →</a>
+</section>
+<footer>© HumanPetsWorld</footer>
+</main>
+
+<script>
+const T={
+ru:{welcome:"ДОБРО ПОЖАЛОВАТЬ В НАШ МИР",title1:"Тут всё",title2:"наоборот.",lead:"Знакомый мир, только роли поменялись местами. Больше странных сцен, новых историй и контента HumanPetsWorld — в Telegram.",join:"Открыть Telegram",expect:"Что тебя там ждёт",expectText:"Немного контента из нашего перевёрнутого мира.",lab1:"Наш мир",lab2:"Видео",lab3:"Новые истории",more:"Хочешь увидеть больше?",moreText:"Продолжение мира HumanPetsWorld уже в Telegram.",join2:"Перейти в HumanPetsWorld"},
+uk:{welcome:"ЛАСКАВО ПРОСИМО ДО НАШОГО СВІТУ",title1:"Тут усе",title2:"навпаки.",lead:"Знайомий світ, тільки ролі помінялися місцями. Більше дивних сцен, нових історій і контенту HumanPetsWorld — у Telegram.",join:"Відкрити Telegram",expect:"Що на тебе там чекає",expectText:"Трохи контенту з нашого перевернутого світу.",lab1:"Наш світ",lab2:"Відео",lab3:"Нові історії",more:"Хочеш побачити більше?",moreText:"Продовження світу HumanPetsWorld уже в Telegram.",join2:"Перейти в HumanPetsWorld"},
+en:{welcome:"WELCOME TO OUR WORLD",title1:"Everything is",title2:"reversed.",lead:"A familiar world where the roles have switched. More strange scenes, new stories and HumanPetsWorld content await you on Telegram.",join:"Open Telegram",expect:"What you'll find there",expectText:"A glimpse into our upside-down world.",lab1:"Our world",lab2:"Videos",lab3:"New stories",more:"Want to see more?",moreText:"The HumanPetsWorld universe continues on Telegram.",join2:"Visit HumanPetsWorld"}
+};
+function setLang(l){
+ if(!T[l]) l="en";
+ document.documentElement.lang=l;
+ document.querySelectorAll("[data-i]").forEach(e=>e.textContent=T[l][e.dataset.i]||"");
+ document.querySelectorAll(".lang button").forEach(b=>b.classList.toggle("active",b.dataset.lang===l));
+ localStorage.setItem("hpw-lang",l);
+}
+document.querySelectorAll(".lang button").forEach(b=>b.onclick=()=>setLang(b.dataset.lang));
+let saved=localStorage.getItem("hpw-lang");
+let browser=(navigator.language||"en").toLowerCase();
+let auto=browser.startsWith("ru")?"ru":browser.startsWith("uk")?"uk":"en";
+setLang(saved||auto);
+</script>
+</body>
+</html>
