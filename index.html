@@ -27,6 +27,12 @@ h1{font-size:clamp(38px,11vw,68px);line-height:.96;letter-spacing:-2px;margin:18
 .cta{display:flex;justify-content:center;align-items:center;gap:10px;width:min(100%,430px);min-height:59px;margin:27px auto 10px;text-decoration:none;color:white;font-size:17px;font-weight:900;border-radius:17px;background:linear-gradient(105deg,#147e7b,#121217 43%,#ae1c3c);border:1px solid rgba(255,255,255,.13);box-shadow:0 15px 45px rgba(0,0,0,.4),-3px 0 #25f4ee,3px 0 #fe2c55;transition:.18s}
 .cta:hover{transform:translateY(-2px);filter:brightness(1.12)} .cta:active{transform:scale(.985)}
 .address{font-size:12px;color:#696972}
+.copy-link{display:inline-flex;align-items:center;gap:6px;margin:10px auto 0;padding:9px 13px;border:1px solid #34343d;border-radius:10px;background:#17171d;color:#dedee5;font:inherit;font-size:12px;font-weight:750;cursor:pointer}
+.copy-link:active{transform:scale(.98)}
+.copy-status{min-height:18px;margin-top:5px;color:#25f4ee;font-size:12px}
+.telegram-help{display:none;max-width:430px;margin:13px auto 0;padding:12px 14px;border-radius:14px;background:rgba(255,255,255,.045);border:1px solid #292930;color:#a7a7b0;font-size:12px;line-height:1.55}
+.telegram-help.show{display:block}
+.telegram-fallback{display:inline-block;margin-top:9px;color:#25f4ee;font-weight:800}
 .section{margin-top:42px}.section h2{font-size:24px;margin:0 0 7px}.section>p{margin:0 0 18px;color:#9999a2;font-size:14px;line-height:1.55}
 .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
 .card{position:relative;aspect-ratio:9/14;border-radius:18px;overflow:hidden;background:linear-gradient(145deg,#191920,#0e0e12);border:1px solid #27272e}
@@ -50,8 +56,11 @@ footer{text-align:center;margin-top:34px;color:#505058;font-size:11px}
  <div class="pill" data-i="welcome"></div>
  <h1><span data-i="title1"></span><br><span class="accent" data-i="title2"></span></h1>
  <p class="lead" data-i="lead"></p>
- <a class="cta" href="https://t.me/HumanPetsWorld" target="_blank" rel="noopener"><span>✈</span><span data-i="join"></span></a>
+ <a class="cta telegram-link" href="https://t.me/HumanPetsWorld"><span>✈</span><span data-i="join"></span></a>
  <div class="address">t.me/HumanPetsWorld</div>
+ <button class="copy-link" id="copyLink" type="button"><span>⧉</span><span data-i="copy"></span></button>
+ <div class="copy-status" id="copyStatus" role="status" aria-live="polite"></div>
+ <div class="telegram-help" id="telegramHelp"><div data-i="telegramHelp"></div><a class="telegram-fallback" href="https://t.me/HumanPetsWorld" data-i="telegramFallback"></a></div>
 </section>
 
 <section class="section">
@@ -77,16 +86,16 @@ footer{text-align:center;margin-top:34px;color:#505058;font-size:11px}
 </section>
 <section class="bottom">
  <h3 data-i="more"></h3><p data-i="moreText"></p>
- <a class="cta" href="https://t.me/HumanPetsWorld" target="_blank" rel="noopener"><span data-i="join2"></span> →</a>
+ <a class="cta telegram-link" href="https://t.me/HumanPetsWorld"><span data-i="join2"></span> →</a>
 </section>
 <footer>© HumanPetsWorld</footer>
 </main>
 
 <script>
 const T={
-ru:{welcome:"ДОБРО ПОЖАЛОВАТЬ В НАШ МИР",title1:"Тут всё",title2:"наоборот.",lead:"Знакомый мир, только роли поменялись местами. Больше странных сцен, новых историй и контента HumanPetsWorld — в Telegram.",join:"Открыть Telegram",expect:"Что тебя там ждёт",expectText:"Немного контента из нашего перевёрнутого мира.",lab1:"Наш мир",lab2:"Видео",lab3:"Новые истории",more:"Хочешь увидеть больше?",moreText:"Продолжение мира HumanPetsWorld уже в Telegram.",join2:"Перейти в HumanPetsWorld"},
-uk:{welcome:"ЛАСКАВО ПРОСИМО ДО НАШОГО СВІТУ",title1:"Тут усе",title2:"навпаки.",lead:"Знайомий світ, тільки ролі помінялися місцями. Більше дивних сцен, нових історій і контенту HumanPetsWorld — у Telegram.",join:"Відкрити Telegram",expect:"Що на тебе там чекає",expectText:"Трохи контенту з нашого перевернутого світу.",lab1:"Наш світ",lab2:"Відео",lab3:"Нові історії",more:"Хочеш побачити більше?",moreText:"Продовження світу HumanPetsWorld уже в Telegram.",join2:"Перейти в HumanPetsWorld"},
-en:{welcome:"WELCOME TO OUR WORLD",title1:"Everything is",title2:"reversed.",lead:"A familiar world where the roles have switched. More strange scenes, new stories and HumanPetsWorld content await you on Telegram.",join:"Open Telegram",expect:"What you'll find there",expectText:"A glimpse into our upside-down world.",lab1:"Our world",lab2:"Videos",lab3:"New stories",more:"Want to see more?",moreText:"The HumanPetsWorld universe continues on Telegram.",join2:"Visit HumanPetsWorld"}
+ru:{welcome:"ДОБРО ПОЖАЛОВАТЬ В НАШ МИР",title1:"Тут всё",title2:"наоборот.",lead:"Знакомый мир, только роли поменялись местами. Больше странных сцен, новых историй и контента HumanPetsWorld — в Telegram.",join:"Открыть Telegram",expect:"Что тебя там ждёт",expectText:"Немного контента из нашего перевёрнутого мира.",lab1:"Наш мир",lab2:"Видео",lab3:"Новые истории",more:"Хочешь увидеть больше?",moreText:"Продолжение мира HumanPetsWorld уже в Telegram.",join2:"Перейти в HumanPetsWorld",telegramHelp:"Если Telegram не открылся, нажмите ⋯ в меню TikTok и выберите «Открыть в браузере».",telegramFallback:"Открыть обычную ссылку Telegram",copy:"Скопировать ссылку",copied:"Ссылка скопирована!",copyFailed:"Не удалось скопировать — выделите адрес выше."},
+uk:{welcome:"ЛАСКАВО ПРОСИМО ДО НАШОГО СВІТУ",title1:"Тут усе",title2:"навпаки.",lead:"Знайомий світ, тільки ролі помінялися місцями. Більше дивних сцен, нових історій і контенту HumanPetsWorld — у Telegram.",join:"Відкрити Telegram",expect:"Що на тебе там чекає",expectText:"Трохи контенту з нашого перевернутого світу.",lab1:"Наш світ",lab2:"Відео",lab3:"Нові історії",more:"Хочеш побачити більше?",moreText:"Продовження світу HumanPetsWorld уже в Telegram.",join2:"Перейти в HumanPetsWorld",telegramHelp:"Якщо Telegram не відкрився, натисніть ⋯ у меню TikTok і виберіть «Відкрити у браузері».",telegramFallback:"Відкрити звичайне посилання Telegram",copy:"Скопіювати посилання",copied:"Посилання скопійовано!",copyFailed:"Не вдалося скопіювати — виділіть адресу вище."},
+en:{welcome:"WELCOME TO OUR WORLD",title1:"Everything is",title2:"reversed.",lead:"A familiar world where the roles have switched. More strange scenes, new stories and HumanPetsWorld content await you on Telegram.",join:"Open Telegram",expect:"What you'll find there",expectText:"A glimpse into our upside-down world.",lab1:"Our world",lab2:"Videos",lab3:"New stories",more:"Want to see more?",moreText:"The HumanPetsWorld universe continues on Telegram.",join2:"Visit HumanPetsWorld",telegramHelp:"If Telegram does not open, tap ⋯ in TikTok and choose “Open in browser”.",telegramFallback:"Open regular Telegram link",copy:"Copy channel link",copied:"Link copied!",copyFailed:"Could not copy — select the address above."}
 };
 function setLang(l){
  if(!T[l]) l="en";
@@ -100,6 +109,47 @@ let saved=localStorage.getItem("hpw-lang");
 let browser=(navigator.language||"en").toLowerCase();
 let auto=browser.startsWith("ru")?"ru":browser.startsWith("uk")?"uk":"en";
 setLang(saved||auto);
+
+// Запуск приложения возможен только после нажатия. Если переход заблокирован,
+// пробуем обычную ссылку; подсказка остаётся на странице при возврате.
+let telegramTimer;
+document.querySelectorAll(".telegram-link").forEach(link=>link.addEventListener("click",event=>{
+ if(event.defaultPrevented || event.button!==0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+ event.preventDefault();
+ clearTimeout(telegramTimer);
+ document.getElementById("telegramHelp").classList.add("show");
+ window.location.href="tg://resolve?domain=HumanPetsWorld";
+ telegramTimer=setTimeout(()=>{
+   if(!document.hidden) window.location.href="https://t.me/HumanPetsWorld";
+ },1500);
+}));
+document.addEventListener("visibilitychange",()=>{
+ if(document.hidden){clearTimeout(telegramTimer);telegramTimer=undefined;}
+});
+window.addEventListener("pagehide",()=>clearTimeout(telegramTimer));
+
+document.getElementById("copyLink").addEventListener("click",async()=>{
+ const address="https://t.me/HumanPetsWorld";
+ const status=document.getElementById("copyStatus");
+ let copied=false;
+ try{
+   if(navigator.clipboard && window.isSecureContext){
+     await navigator.clipboard.writeText(address);
+     copied=true;
+   }else{
+     const input=document.createElement("textarea");
+     input.value=address;
+     input.style.position="fixed";
+     input.style.opacity="0";
+     document.body.appendChild(input);
+     input.select();
+     copied=document.execCommand("copy");
+     input.remove();
+   }
+ }catch(e){copied=false;}
+ const lang=document.documentElement.lang;
+ status.textContent=T[lang][copied?"copied":"copyFailed"];
+});
 </script>
 </body>
 </html>
